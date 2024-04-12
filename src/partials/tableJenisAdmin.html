@@ -1,0 +1,178 @@
+<div class="rounded-sm border border-stroke bg-white px-3 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
+    <h4 class="mb-6 text-xl font-bold text-black dark:text-white">
+      Data Aset
+    </h4>
+  
+    <table id="dataTable" class="table-auto w-full">
+      <thead>
+        <tr class="bg-gray-2 text-left dark:bg-meta-4">
+          <th class="px-3 py-2.5 text-center">Nama</th>
+          <th class="px-3 py-2.5 text-center">Email</th>
+          <th class="px-3 py-2.5 text-center">Username</th>
+          <th class="px-3 py-2.5 text-center">Password</th>
+          <th class="px-3 py-2.5 text-center">Tindakan</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <!-- Table rows will be dynamically generated here -->
+      </tbody>
+    </table>
+  
+    <div id="pagination" class="flex justify-center mt-6"></div>
+  </div>
+  
+  <script>
+    const data = [
+      { 
+        nama: 'Gungde', 
+        email: 'admin@gmail.com', 
+        username: 'gungde123', 
+        password: '12345678', 
+      },
+      { 
+        nama: 'koko', 
+        email: 'admin@gmail.com', 
+        username: 'gungde123', 
+        password: '12345678', 
+      },
+      { 
+        nama: 'aang', 
+        email: 'admin@gmail.com', 
+        username: 'gungde123', 
+        password: '12345678', 
+      },
+      { 
+        nama: 'pinkan', 
+        email: 'admin@gmail.com', 
+        username: 'gungde123', 
+        password: '12345678', 
+      },
+      { 
+        nama: 'sherly', 
+        email: 'admin@gmail.com', 
+        username: 'gungde123', 
+        password: '12345678', 
+      },
+      { 
+        nama: 'bashkara', 
+        email: 'admin@gmail.com', 
+        username: 'gungde123', 
+        password: '12345678', 
+      },
+    ];
+  
+    let itemsPerPage = 5;
+    let currentPage = 1;
+  
+  function displayData() {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const paginatedData = data.slice(startIndex, endIndex);
+  
+    const tableBody = document.getElementById('tableBody');
+    tableBody.innerHTML = '';
+  
+    paginatedData.forEach(rowData => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td class="text-center p-2.5">${rowData.nama}</td>
+        <td class="text-center p-2.5">${rowData.email}</td>
+        <td class="text-center p-2.5">${rowData.username}</td>
+        <td class="text-center p-2.5">${rowData.password}</td>
+        <td class="flex items-center justify-center p-2.5">
+          <button class="bg-blue-500 text-white px-3 py-1 rounded-md mr-2" onclick="editItem('${rowData.id}')">Edit</button>
+          <button class="bg-red-500 text-white px-3 py-1 rounded-md">Delete</button>
+        </td>
+      `;
+      tableBody.appendChild(row);
+    });
+  
+    // Update pagination
+    const pagination = document.getElementById('pagination');
+    pagination.innerHTML = '';
+  
+    const totalPages = Math.ceil(data.length / itemsPerPage);
+    const maxVisiblePages = 3;
+    let startPage = Math.max(currentPage - Math.floor(maxVisiblePages / 2), 1);
+    let endPage = Math.min(startPage + maxVisiblePages - 1, totalPages);
+  
+    if (endPage - startPage < maxVisiblePages - 1) {
+      startPage = Math.max(endPage - maxVisiblePages + 1, 1);
+    }
+  
+    //Previous page
+    const prevButton = document.createElement('button');
+    prevButton.textContent = '<';
+    prevButton.classList.add('mx-1', 'px-3', 'py-1.5', 'bg-blue-500', 'text-white', 'rounded', 'cursor-pointer', 'font-bold');
+    prevButton.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        displayData();
+      }
+    });
+    pagination.appendChild(prevButton);
+  
+    //Total page
+    for (let i = startPage; i <= endPage; i++) {
+      const pageButton = document.createElement('button');
+      pageButton.textContent = i;
+      pageButton.classList.add('mx-1', 'px-3', 'py-1.5', 'bg-blue-500', 'text-white', 'rounded', 'cursor-pointer');
+      if (i === currentPage) {
+        pageButton.classList.add('bg-blue-700');
+      } else {
+        pageButton.addEventListener('click', () => {
+          currentPage = i;
+          displayData();
+        });
+      }
+      pagination.appendChild(pageButton);
+    }
+  
+    //Next page
+    const nextButton = document.createElement('button');
+    nextButton.textContent = '>';
+    nextButton.classList.add('mx-1', 'px-3', 'py-1.5', 'bg-blue-500', 'text-white', 'rounded', 'cursor-pointer', 'font-bold');
+    nextButton.addEventListener('click', () => {
+      if (currentPage < totalPages) {
+        currentPage++;
+        displayData();
+      }
+    });
+    pagination.appendChild(nextButton);
+  
+    // Dropdown for changing rows per page
+    const rowsPerPageDropdown = document.createElement('select');
+    rowsPerPageDropdown.classList.add('mx-2', 'px-3', 'py-1.5', 'bg-blue-500', 'text-white', 'rounded', 'cursor-pointer');
+    rowsPerPageDropdown.addEventListener('change', (event) => {
+      itemsPerPage = parseInt(event.target.value);
+      currentPage = 1;
+      displayData(); // Re-render the table with the new items per page
+    });
+  
+    const options = [5, 10, 15]; // Change this array to add more options
+    options.forEach(option => {
+      const optionElement = document.createElement('option');
+      optionElement.textContent = option;
+      optionElement.value = option;
+      if (option === itemsPerPage) {
+        optionElement.selected = true;
+      }
+      rowsPerPageDropdown.appendChild(optionElement);
+    });
+  
+    const label = document.createElement('label');
+    label.textContent = 'Rows per page:';
+    label.classList.add('mx-2', 'text-gray-700', 'lg:absolute', 'lg:right-30');
+    label.appendChild(rowsPerPageDropdown);
+    pagination.appendChild(label);
+    
+  }
+  
+  function editItem(itemId) {
+    // Redirect to the edit page with the item ID
+    window.location.href = `edit-item.html?id=${itemId}`;
+  }
+  
+  displayData();
+  
+  </script>
