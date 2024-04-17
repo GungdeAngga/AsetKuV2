@@ -1,7 +1,17 @@
 <div class="rounded-sm border border-stroke bg-white px-3 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-2 xl:pb-1">
-  <h4 class="mb-6 text-xl font-bold text-black dark:text-white">
-    Data Aset
-  </h4>
+  <div class="mb-6 flex text-xl font-bold">
+    <h4 class="text-black dark:text-white">
+      Data Aset
+    </h4>
+    <a 
+      class="ml-5 text-center w-40 bg-blue-500 dark:bg-red-700 rounded-xl text-white"
+      href="addMaintenance.html"
+      @click="selected = (selected === 'addMaintenance' ? '':'addMaintenance')"
+      :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'addMaintenance') && (page === 'addMaintenance') }"
+    >
+      Tambah Data
+    </a>
+  </div>
 
   <table id="dataTable" class="table-auto w-full">
     <thead>

@@ -1,15 +1,22 @@
 <div class="rounded-sm border border-stroke bg-white px-3 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
-    <h4 class="mb-6 text-xl font-bold text-black dark:text-white">
+  <div class="mb-6 flex text-xl font-bold">
+    <h4 class="text-black dark:text-white">
       Data Jenis Aset
     </h4>
+    <a 
+      class="ml-5 text-center w-40 bg-blue-500 dark:bg-red-700 rounded-xl text-white"
+      href="addMaintenance.html"
+      @click="selected = (selected === 'addMaintenance' ? '':'addMaintenance')"
+      :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'addMaintenance') && (page === 'addMaintenance') }"
+    >
+      Tambah Data
+    </a>
+  </div>
   
     <table id="dataTable" class="table-auto w-full">
       <thead>
         <tr class="bg-gray-2 text-left dark:bg-meta-4">
-          <th class="px-3 py-2.5 text-center">Nama</th>
-          <th class="px-3 py-2.5 text-center">Email</th>
-          <th class="px-3 py-2.5 text-center">Username</th>
-          <th class="px-3 py-2.5 text-center">Password</th>
+          <th class="px-3 py-2.5 text-center">Nama Jenis Aset</th>
           <th class="px-3 py-2.5 text-center">Tindakan</th>
         </tr>
       </thead>
@@ -24,41 +31,23 @@
   <script>
     const data = [
       { 
-        nama: 'Gungde', 
-        email: 'admin@gmail.com', 
-        username: 'gungde123', 
-        password: '12345678', 
+        namaJenisAset: 'Elektronik', 
       },
       { 
-        nama: 'koko', 
-        email: 'admin@gmail.com', 
-        username: 'gungde123', 
-        password: '12345678', 
+        namaJenisAset: 'Kendaraan', 
       },
       { 
-        nama: 'aang', 
-        email: 'admin@gmail.com', 
-        username: 'gungde123', 
-        password: '12345678', 
+        namaJenisAset: 'Pendingin', 
       },
       { 
-        nama: 'pinkan', 
-        email: 'admin@gmail.com', 
-        username: 'gungde123', 
-        password: '12345678', 
+        namaJenisAset: 'Sesuatu', 
       },
       { 
-        nama: 'sherly', 
-        email: 'admin@gmail.com', 
-        username: 'gungde123', 
-        password: '12345678', 
+        namaJenisAset: 'Sesuatu x2', 
       },
       { 
-        nama: 'bashkara', 
-        email: 'admin@gmail.com', 
-        username: 'gungde123', 
-        password: '12345678', 
-      },
+        namaJenisAset: 'Sesuatu v3', 
+      },  
     ];
   
     let itemsPerPage = 5;
@@ -75,10 +64,7 @@
     paginatedData.forEach(rowData => {
       const row = document.createElement('tr');
       row.innerHTML = `
-        <td class="text-center p-2.5">${rowData.nama}</td>
-        <td class="text-center p-2.5">${rowData.email}</td>
-        <td class="text-center p-2.5">${rowData.username}</td>
-        <td class="text-center p-2.5">${rowData.password}</td>
+        <td class="text-center p-2.5">${rowData.namaJenisAset}</td>
         <td class="flex items-center justify-center p-2.5">
           <button class="bg-blue-500 text-white px-3 py-1 rounded-md mr-2" onclick="editItem('${rowData.id}')">Edit</button>
           <button class="bg-red-500 text-white px-3 py-1 rounded-md">Delete</button>
