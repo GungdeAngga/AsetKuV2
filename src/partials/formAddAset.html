@@ -1,0 +1,85 @@
+<div class="rounded-lg border border-stroke bg-white px-3 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-6 xl:pb-5">
+    <h4 class="text-black dark:text-white mb-6 flex text-xl font-bold">
+        Tambah Aset
+    </h4>
+    <form class="font-bold space-y-5" id="addAset">
+        <div class="flex space-x-6">
+            <div class="basis-1/2 flex flex-col">
+                <label>Nama Aset</label>
+                <input type="text" id="namaAset" name="namaAset" class="rounded-lg border">
+            </div>
+
+            <div class="basis-1/2 flex flex-col">
+                <label>Total Barang</label>
+                <input type="text" id="totalBarang" name="totalBarang" class="rounded-lg border">
+            </div>
+        </div>
+
+        <div class="flex space-x-6">
+            <div class="basis-1/3 flex flex-col">
+                <label>Select Lokasi Aset</label> <!--Dropdown-->
+                <select id="lokasiAset" name="lokasiAset" class="rounded-lg border">
+                    <option value="denpasar">Denpasar</option>
+                    <option value="gianyar">Gianyar</option>
+                    <option value="klungkung">Klungkung</option>
+                    <option value="tabanan">Tabanan</option>
+                </select>
+            </div>
+            
+            <div class="basis-1/3 flex flex-col">
+                <label>Select Jenis Aset</label> <!--Dropdown-->
+                <select id="jenisAset" name="jenisAset" class="rounded-lg border">
+                    <option value="elektronik">Elektronik</option>
+                    <option value="pendingin">Pendingin</option>
+                    <option value="sesuatu1">Sesuatu1</option>
+                    <option value="sesuatu2">Sesuatu2</option>
+                </select>
+            </div>
+            
+            <div class="basis-1/3 flex flex-col">
+                <label>Select Tipe Aset</label> <!--Dropdown-->
+                <select id="tipeAset" name="tipeAset" class="rounded-lg border">
+                    <option value="komputer">Komputer</option>
+                    <option value="AC">AC</option>
+                    <option value="meja">Meja</option>
+                    <option value="kursi">Kursi</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="flex space-x-6">
+            <div class="basis-1/3 flex flex-col">
+                <label>Supplier</label>
+                <input type="text" id="supplier" name="supplier" class="rounded-lg border">
+            </div>
+
+            <div class="basis-1/3 flex flex-col">
+                <label>Harga</label>
+                <input type="text" id="harga" name="harga" class="rounded-lg border">
+            </div>
+
+            <div class="basis-1/3 flex flex-col">
+                <label>Tanggal Pembelian</label>
+                <input type="date" id="tanggalPembelian" name="tanggalPembelian" class="rounded-lg border">
+            </div>
+        </div>
+        
+        <div class="flex space-x-6">
+            <div class="basis-1/3 flex flex-col">
+                <label>Garansi</label>
+                <input type="text" id="garansi" name="garansi" class="rounded-lg border">
+            </div>
+
+            <div class="basis-1/3 flex flex-col">
+                <label>Deskripsi</label>
+                <input type="text" id="deskripsi" name="deskripsi" class="rounded-lg border">
+            </div>
+
+            <div class="basis-1/3 flex flex-col">
+                <label>Gambar</label>
+                <input type="file" id="gambar" name="gambar">
+            </div>
+        </div>
+        <button type="submit" value="submit" form="addAset" class="border-2 rounded-lg h-10 w-40 bg-primary text-white">Submit</button>
+    </form>
+</div>

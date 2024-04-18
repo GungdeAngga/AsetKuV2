@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tambah Maintenance</title>
+    <title>Tipe Aset</title>
   </head>
 
   <body
-    x-data="{ page: 'menuAset', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+    x-data="{ page: 'masterAdmin', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
     x-init="
           darkMode = JSON.parse(localStorage.getItem('darkMode'));
           $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
@@ -34,13 +34,13 @@
 
         <!-- ===== Main Content Start ===== -->
         <main>
-          <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-5">
+          <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:pt-5">
             <!-- Breadcrumb Start -->
             <div
               class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
             >
               <h2 class="text-title-md2 font-bold text-black dark:text-white">
-                Tambah Data Maintenance
+                Menu Tipe Aset
               </h2>
 
               <nav>
@@ -48,7 +48,7 @@
                   <li>
                     <a class="font-medium" href="index.html">Dashboard /</a>
                   </li>
-                  <li class="font-medium text-primary">Tambah Maintenance</li>
+                  <li class="font-medium text-primary">Menu Tipe Aset</li>
                 </ol>
               </nav>
             </div>
@@ -57,7 +57,7 @@
             <!-- ====== Table Section Start -->
             <div class="flex flex-col gap-10">
               <!-- ====== Table One Start -->
-              <include src="./partials/tableMaintenance.html" />
+              <include src="./partials/tableTipeAset.html" />
               <!-- ====== Table One End -->
             </div>
             <!-- ====== Table Section End -->

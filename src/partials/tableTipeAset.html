@@ -4,10 +4,10 @@
       Data Tipe Aset
     </h4>
     <a 
-      class="ml-5 text-center w-40 bg-blue-500 dark:bg-red-700 rounded-xl text-white"
-      href="addMaintenance.html"
-      @click="selected = (selected === 'addMaintenance' ? '':'addMaintenance')"
-      :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'addMaintenance') && (page === 'addMaintenance') }"
+      class="ml-5 text-center w-40 bg-primary rounded-xl text-white"
+      href="index.html"
+      @click="selected = (selected === 'index' ? '':'index')"
+      :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'index') && (page === 'index') }"
     >
       Tambah Data
     </a>
@@ -32,27 +32,27 @@
   <script>
     const data = [
       { 
-        namaTipeAset: 'Gungde', 
+        namaTipeAset: 'Komputer', 
         jenisAset: 'Elektronik', 
       },
       { 
-        namaTipeAset: 'koko', 
+        namaTipeAset: 'Motor', 
         jenisAset: 'Kendaraan', 
       },
       { 
-        namaTipeAset: 'aang', 
+        namaTipeAset: 'Ac', 
         jenisAset: 'Pendingin', 
       },
       { 
-        namaTipeAset: 'pinkan', 
+        namaTipeAset: 'Meja', 
         jenisAset: 'Sesuatu', 
       },
       { 
-        namaTipeAset: 'sherly', 
+        namaTipeAset: 'Kursi', 
         jenisAset: 'Sesuatu x2', 
       },
       { 
-        namaTipeAset: 'bashkara', 
+        namaTipeAset: 'Jendela', 
         jenisAset: 'Sesuatu v3', 
       },
     ];
