@@ -1,3 +1,25 @@
+<?php
+
+include 'connect.php';
+if(isset($_POST['submit'])){
+    $nama=$_POST['nama'];
+    $email=$_POST['email'];
+    $username=$_POST['username'];
+    $password=$_POST['password'];
+    
+    $sql="insert into `asetku` (nama, email, username, password) 
+    value('$nama', '$email', '$username', '$password')";
+    $result=mysqli_query($con,$sql);
+    if($result){
+        echo "Data berhasil di input";
+    } else {
+        die(mysqli_error($con));
+    }
+}
+
+?>
+
+
 <div class="rounded-lg border border-stroke bg-white px-3 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-6 xl:pb-5">
     <div class="bg-red-600 w-30 rounded-lg text-center text-xl">
         <a href="masterAdmin.html" class="text-white font-bold">
@@ -32,6 +54,6 @@
             </div>
         </div>
         
-        <button type="submit" value="submit" form="addAset" class="border-2 rounded-lg h-10 w-40 bg-primary text-white">Submit</button>
+        <button type="submit" value="submit" name="submit" class="border-2 rounded-lg h-10 w-40 bg-primary text-white">Submit</button>
     </form>
 </div>
